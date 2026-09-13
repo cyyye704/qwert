@@ -1,0 +1,285 @@
+{
+  "base_commit": "5984065",
+  "editing_scope": "仅论文文档；不执行构建器、模型或绘图代码",
+  "tables": [
+    {
+      "number": 1,
+      "caption": "主要符号与单位",
+      "source": "论文构建/02_符号系统.md；src/config.py；src/problem1.py",
+      "previous_number": 2
+    },
+    {
+      "number": 2,
+      "caption": "问题一指定时段购电量及全天费用",
+      "source": "results/problem1.json:specified_purchase_kwh,daily_purchase_kwh,daily_purchase_cost_yuan",
+      "previous_number": 3
+    },
+    {
+      "number": 3,
+      "caption": "问题一储能侧充放电及首末储电量（kWh）",
+      "source": "results/problem1.json:storage_windows_kwh,soc_0000_kwh,soc_2400_kwh",
+      "previous_number": 4
+    },
+    {
+      "number": 4,
+      "caption": "问题二 2025-03-20 指定时段购电量与全天费用",
+      "source": "results/problem2.json:typical_days/2025-03-20/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 7
+    },
+    {
+      "number": 5,
+      "caption": "问题二 2025-03-20 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem2.json:typical_days/2025-03-20/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 8
+    },
+    {
+      "number": 6,
+      "caption": "问题二 2025-06-21 指定时段购电量与全天费用",
+      "source": "results/problem2.json:typical_days/2025-06-21/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 9
+    },
+    {
+      "number": 7,
+      "caption": "问题二 2025-06-21 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem2.json:typical_days/2025-06-21/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 10
+    },
+    {
+      "number": 8,
+      "caption": "问题二 2025-09-23 指定时段购电量与全天费用",
+      "source": "results/problem2.json:typical_days/2025-09-23/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 11
+    },
+    {
+      "number": 9,
+      "caption": "问题二 2025-09-23 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem2.json:typical_days/2025-09-23/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 12
+    },
+    {
+      "number": 10,
+      "caption": "问题二 2025-12-21 指定时段购电量与全天费用",
+      "source": "results/problem2.json:typical_days/2025-12-21/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 13
+    },
+    {
+      "number": 11,
+      "caption": "问题二 2025-12-21 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem2.json:typical_days/2025-12-21/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 14
+    },
+    {
+      "number": 12,
+      "caption": "问题二四个典型日紧急购电（kWh）",
+      "source": "results/problem2.json:typical_days；合并相邻非零10分钟时段",
+      "previous_number": 15
+    },
+    {
+      "number": 13,
+      "caption": "问题二与问题三主方案的统计期比较",
+      "source": "results/problem2.json:annual；results/problem3.json:full_scheme",
+      "previous_number": 17
+    },
+    {
+      "number": 14,
+      "caption": "问题三 2025-03-20 指定时段购电量与全天费用（原计划/最终计划）",
+      "source": "results/problem3.json:typical_days/2025-03-20/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 19
+    },
+    {
+      "number": 15,
+      "caption": "问题三 2025-03-20 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem3.json:typical_days/2025-03-20/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 20
+    },
+    {
+      "number": 16,
+      "caption": "问题三 2025-06-21 指定时段购电量与全天费用（原计划/最终计划）",
+      "source": "results/problem3.json:typical_days/2025-06-21/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 21
+    },
+    {
+      "number": 17,
+      "caption": "问题三 2025-06-21 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem3.json:typical_days/2025-06-21/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 22
+    },
+    {
+      "number": 18,
+      "caption": "问题三 2025-09-23 指定时段购电量与全天费用（原计划/最终计划）",
+      "source": "results/problem3.json:typical_days/2025-09-23/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 23
+    },
+    {
+      "number": 19,
+      "caption": "问题三 2025-09-23 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem3.json:typical_days/2025-09-23/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 24
+    },
+    {
+      "number": 20,
+      "caption": "问题三 2025-12-21 指定时段购电量与全天费用（原计划/最终计划）",
+      "source": "results/problem3.json:typical_days/2025-12-21/plan_purchase_kwh,final_purchase_kwh,metrics",
+      "previous_number": 25
+    },
+    {
+      "number": 21,
+      "caption": "问题三 2025-12-21 储能充放电量及首末储电量（kWh）",
+      "source": "results/problem3.json:typical_days/2025-12-21/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 26
+    },
+    {
+      "number": 22,
+      "caption": "问题三四个典型日紧急购电（kWh）",
+      "source": "results/problem3.json:typical_days；合并相邻非零10分钟时段",
+      "previous_number": 27
+    },
+    {
+      "number": 23,
+      "caption": "波动电价下两种因果方案的统计期结果",
+      "source": "results/problem4_comparison.csv:causal Q4-2,causal Q4-3",
+      "previous_number": 29
+    },
+    {
+      "number": 24,
+      "caption": "波动电价下典型日购电与费用汇总",
+      "source": "results/problem4.json:typical_days",
+      "previous_number": 31
+    },
+    {
+      "number": 25,
+      "caption": "波动电价下指定10分钟时段最终购电量（kWh）",
+      "source": "results/problem4.json:typical_days/*/final_purchase_kwh",
+      "previous_number": 32
+    },
+    {
+      "number": 26,
+      "caption": "波动电价下典型日储能量（kWh）",
+      "source": "results/problem4.json:typical_days/*/charge_kwh,discharge_kwh,soc_kwh",
+      "previous_number": 33
+    },
+    {
+      "number": 27,
+      "caption": "问题四之二四个典型日紧急购电（kWh）",
+      "source": "results/problem4.json:typical_days；合并相邻非零10分钟时段",
+      "previous_number": 34
+    },
+    {
+      "number": 28,
+      "caption": "问题四之三四个典型日紧急购电（kWh）",
+      "source": "results/problem4.json:typical_days；合并相邻非零10分钟时段",
+      "previous_number": 35
+    },
+    {
+      "number": 29,
+      "caption": "实际运行与数值结果核验",
+      "source": "results/problem*.json；build/c_spec_cache/*.npz；result*.xlsx；只读核验",
+      "previous_number": 37
+    }
+  ],
+  "figures": [
+    {
+      "number": 1,
+      "caption": "四问的模型递进与共同评价流程",
+      "source": "既有TikZ流程图"
+    },
+    {
+      "number": 2,
+      "caption": "问题一供需曲线与储能调控轨迹",
+      "source": "new_figures_main/Q1_F1_optimal_dispatch.pdf",
+      "height_cm": 7.0,
+      "note": "电价按5000 kW缩放；SOC表示储能内部电量。"
+    },
+    {
+      "number": 3,
+      "caption": "问题一电量平衡与运行状态",
+      "source": "new_figures_main/Q1_F2_solution_diagnostics.pdf",
+      "height_cm": 7.0,
+      "note": "右图对每个变量分别归一化，颜色用于比较该变量的时序变化。"
+    },
+    {
+      "number": 4,
+      "caption": "可用储电窗口与功率上限对购电费的影响",
+      "source": "new_figures_main/Q1_F3_storage_sensitivity.png",
+      "height_cm": 7.5,
+      "note": "容量系数缩放以6000 kWh为中心的可用窗口；图中标记为所测参数网格的最低费用配置。"
+    },
+    {
+      "number": 5,
+      "caption": "典型日净负荷预测与历史残差场景",
+      "source": "new_figures_main/Q2_F2_uncertainty_scenarios.pdf",
+      "height_cm": 6.5,
+      "note": "阴影为十条场景的P10—P90经验分位带；净负荷为负载减光伏。"
+    },
+    {
+      "number": 6,
+      "caption": "统计期紧急购电的月度与逐日分布",
+      "source": "new_figures_main/Q2_F3_annual_risk_profile.pdf",
+      "height_cm": 8.5,
+      "note": "1月为预热段，不纳入费用统计。"
+    },
+    {
+      "number": 7,
+      "caption": "问题二典型日购电与储能运行",
+      "source": "new_figures_main/Q2_F1_typical_dispatch.pdf",
+      "height_cm": 11.0,
+      "note": "2025-09-23；购电曲线为计划购电，紧急购电另列。图中“弃电/弃光”表示全部余电。"
+    },
+    {
+      "number": 8,
+      "caption": "问题三信息更新与剩余时段调整",
+      "source": "new_figures_main/Q3_F1_rolling_timeline.pdf",
+      "height_cm": 6.3,
+      "note": "已执行时段锁定，每次更新以当前实测储电量为起点。"
+    },
+    {
+      "number": 9,
+      "caption": "各发布时间的光伏预测误差",
+      "source": "new_figures_main/Q3_F2_forecast_improvement.pdf",
+      "height_cm": 6.7,
+      "note": "MAE按各次发布后的当日剩余时段计算。"
+    },
+    {
+      "number": 10,
+      "caption": "滚动方案的费用与紧急购电量比较",
+      "source": "new_figures_main/Q3_F3_strategy_pareto.pdf",
+      "height_cm": 7.6,
+      "note": "图中“理论下界”为原图对完美信息参照的标记；该参照采用逐日优化与终端价值，并非统计期费用的严格下界。"
+    },
+    {
+      "number": 11,
+      "caption": "问题三典型日购电计划的滚动演化",
+      "source": "new_figures_main/Q3_F4_plan_evolution.pdf",
+      "height_cm": 11.0,
+      "note": "2025-09-23；竖虚线为6、12、18时的信息发布时刻。"
+    },
+    {
+      "number": 12,
+      "caption": "典型日电价更新与统计期预测误差",
+      "source": "new_figures_main/Q4_F2_price_forecast_update.pdf",
+      "height_cm": 7.0,
+      "note": "各次预测仅覆盖发布后的未来区间。"
+    },
+    {
+      "number": 13,
+      "caption": "不同价格信息下的日前与滚动费用",
+      "source": "new_figures_main/Q4_F1_information_value.pdf",
+      "height_cm": 7.2,
+      "note": "各点统一按实际电价结算；price-oracle为预知电价对照，“理论下界”为与图10同义的完美信息参照。"
+    },
+    {
+      "number": 14,
+      "caption": "波动电价下的储能与购电配合",
+      "source": "new_figures_main/Q4_F3_price_dispatch_coupling.pdf",
+      "height_cm": 11.0,
+      "note": "2025-09-23；最终电网购电含紧急购电。背景按实际价格P25/P75划分低/高价区间，仅作事后解释。"
+    },
+    {
+      "number": 15,
+      "caption": "电价波动强度与滚动调整节约",
+      "source": "new_figures_main/Q4_F4_rolling_gain_sensitivity.pdf",
+      "height_cm": 7.0,
+      "note": "仅比较因果价格条件下的五组既有情形，日均价格保持不变。"
+    }
+  ]
+}

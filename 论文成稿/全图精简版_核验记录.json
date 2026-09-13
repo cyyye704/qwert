@@ -1,0 +1,72 @@
+{
+  "base_commit": "5984065",
+  "branch": "图表修改",
+  "original_tracked_files_unchanged": true,
+  "equation_blocks_byte_identical": 20,
+  "required_q1_to_q3_tables_preserved": 20,
+  "body_tables": 29,
+  "figures": 15,
+  "source_figures_used_once": 14,
+  "appendix_tables": 1,
+  "body_and_abstract_pages": 25,
+  "including_references_pages": 26,
+  "appendix_pages": 4,
+  "total_pages": 30,
+  "retained_table_tex_blocks_identical": 29,
+  "nondominated_feasible_schemes": [
+    "完整追索式计划",
+    "12:00+18:00",
+    "6:00+12:00+18:00（计划不含追索）"
+  ],
+  "typical_day_differences": {
+    "2025-03-20": {
+      "fixed_q3_minus_q2_yuan": 3201.99,
+      "variable_q4_3_minus_q4_2_yuan": 2961.8
+    },
+    "2025-06-21": {
+      "fixed_q3_minus_q2_yuan": 89.68,
+      "variable_q4_3_minus_q4_2_yuan": 153.65
+    },
+    "2025-09-23": {
+      "fixed_q3_minus_q2_yuan": 3171.74,
+      "variable_q4_3_minus_q4_2_yuan": 3297.27
+    },
+    "2025-12-21": {
+      "fixed_q3_minus_q2_yuan": 504.1,
+      "variable_q4_3_minus_q4_2_yuan": 647.68
+    }
+  },
+  "figure_asset_sha256": {
+    "new_figures_main/Q1_F1_optimal_dispatch.pdf": "783df0d84db5140e69e42db579e13c9a9326e87931db4aeae51cc5134ee170ad",
+    "new_figures_main/Q1_F1_optimal_dispatch.png": "f91a0ad8f14825ef5850b05afb39c126069506e3420ca9a1013b1f99ac0e9f2b",
+    "new_figures_main/Q1_F2_solution_diagnostics.pdf": "83d0ee680ab5ac226475a9f93f3c189bd8af3ace856493a19a9806a848ef86b1",
+    "new_figures_main/Q1_F2_solution_diagnostics.png": "137c98197a81d147715013fa0c7cdf6a4371bdc9ca11a91ea7b087fe5c4812b7",
+    "new_figures_main/Q1_F3_storage_sensitivity.png": "c3faf0abcdb2cf3efdab930ad688c06ff35501b79b5cc9f39012b9f1ceecbfd5",
+    "new_figures_main/Q2_F1_typical_dispatch.pdf": "f004ea6f3ab464559478d19dbafc4c95644977e06f8fd97bc5845575c9937ca7",
+    "new_figures_main/Q2_F1_typical_dispatch.png": "52cce2c47be242d181803baea5555267cb7fb66b9a5215ca39ae4222db4bff99",
+    "new_figures_main/Q2_F2_uncertainty_scenarios.pdf": "4d727344ab379dc20eded15889dd153291e1e26b9728d2bda74b3fa7d41fb9b2",
+    "new_figures_main/Q2_F2_uncertainty_scenarios.png": "842c6c3bed6fd668783bc0fc7c8be55fd16a316315f2b3508b6e2644a087045d",
+    "new_figures_main/Q2_F3_annual_risk_profile.pdf": "f939366589c6e266380a701a5da8c6290eb9da165dbef096874b7d5d88ba2e0a",
+    "new_figures_main/Q2_F3_annual_risk_profile.png": "398372624030b66817af13fc7942bd0ef83aec47d0a1cedef79be9deb0c08e85",
+    "new_figures_main/Q3_F1_rolling_timeline.pdf": "9d167e2532235f14cf96f9c48f97ca9824065875d768d213f729667c8ee679c6",
+    "new_figures_main/Q3_F1_rolling_timeline.png": "327feb2ee82d827f7cc22bbf7a9693609725c879914a73765ff9b86aef663932",
+    "new_figures_main/Q3_F2_forecast_improvement.pdf": "63c520380bed2e3c95cc07c22caeffe3c2ddd114bbb582308f06d2dde0bea590",
+    "new_figures_main/Q3_F2_forecast_improvement.png": "c73bee4672c981af458d7104f03a1fd154672607cc6365879267b176868c0be7",
+    "new_figures_main/Q3_F3_strategy_pareto.pdf": "9fe3e4398eea803ed04c0569d0537be01e90d3e7f150fccadee0228297362423",
+    "new_figures_main/Q3_F3_strategy_pareto.png": "fcf33ce3bc66779b811ea1b6b569c68b796994c82c493189c30522949c122727",
+    "new_figures_main/Q3_F4_plan_evolution.pdf": "01d74697a6559d4961c35fa4d8a46dc20a7febbd1569d6e8073161978246613b",
+    "new_figures_main/Q3_F4_plan_evolution.png": "40c681262eac762b486264ea1a2dc03145a1074cca0af6168e4faa88b4782e13",
+    "new_figures_main/Q4_F1_information_value.pdf": "fbf5384ba4289c361f24c017c64ae8a70dd37940a1e537ee0465614c382f575a",
+    "new_figures_main/Q4_F1_information_value.png": "04ea94e1a4952da989aada9b871694744a8938d368398be9ba1967b9e92131e3",
+    "new_figures_main/Q4_F2_price_forecast_update.pdf": "846483236341c0294d7cb5589ef5239b4427f4dbe4c284c38268c6f460097c9f",
+    "new_figures_main/Q4_F2_price_forecast_update.png": "a8e80e64145ac8d0a09766ee019349d9fb6f8aaa31ddfa2143258be7629359b6",
+    "new_figures_main/Q4_F3_price_dispatch_coupling.pdf": "703ed03d3895406de6fd1d232371b75c33efe72f666cbe2ca7f9a39133f529b8",
+    "new_figures_main/Q4_F3_price_dispatch_coupling.png": "40b9c4a8b695a6ae4dc71a19df3f1b8e2ab3a8323d207ca4be2818158cca45c2",
+    "new_figures_main/Q4_F4_rolling_gain_sensitivity.pdf": "af80c2b63a108fdf9a9f22a4693bf79860db58611663cb76fb5552b665be6eda",
+    "new_figures_main/Q4_F4_rolling_gain_sensitivity.png": "8686bcda0aaa11e6c09f4ad07c214662b3f437b90e0729e9c6d5ed6c959df895"
+  },
+  "pdf_sha256": "07811745e95c93560f8d0cbe95fd065b2bbc8e41a1af2181d5d54d47a7f770d4",
+  "model_runs": 0,
+  "plot_runs": 0,
+  "validation_scope": "Existing saved JSON/CSV and document structure; no re-optimization or re-simulation."
+}

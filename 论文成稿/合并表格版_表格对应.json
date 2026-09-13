@@ -1,0 +1,100 @@
+[
+  {
+    "number": 1,
+    "caption": "主要符号与单位",
+    "previous_tables": [
+      1
+    ]
+  },
+  {
+    "number": 2,
+    "caption": "问题一指定时段购电量及全天费用",
+    "previous_tables": [
+      2
+    ]
+  },
+  {
+    "number": 3,
+    "caption": "问题一储能侧充放电及首末储电量（kWh）",
+    "previous_tables": [
+      3
+    ]
+  },
+  {
+    "number": 4,
+    "caption": "问题二指定日期购电量与全天费用",
+    "previous_tables": [
+      4,
+      6,
+      8,
+      10
+    ]
+  },
+  {
+    "number": 5,
+    "caption": "问题二指定日期储能充放电及首末储电量（kWh）",
+    "previous_tables": [
+      5,
+      7,
+      9,
+      11
+    ]
+  },
+  {
+    "number": 6,
+    "caption": "问题二四个典型日紧急购电（kWh）",
+    "previous_tables": [
+      12
+    ]
+  },
+  {
+    "number": 7,
+    "caption": "问题三指定日期购电量与全天费用",
+    "previous_tables": [
+      14,
+      16,
+      18,
+      20
+    ]
+  },
+  {
+    "number": 8,
+    "caption": "问题三指定日期储能充放电及首末储电量（kWh）",
+    "previous_tables": [
+      15,
+      17,
+      19,
+      21
+    ]
+  },
+  {
+    "number": 9,
+    "caption": "问题三四个典型日紧急购电（kWh）",
+    "previous_tables": [
+      22
+    ]
+  },
+  {
+    "number": 10,
+    "caption": "问题四指定时段购电量、全天购电量与总费用",
+    "previous_tables": [
+      24,
+      25
+    ]
+  },
+  {
+    "number": 11,
+    "caption": "波动电价下典型日储能量（kWh）",
+    "previous_tables": [
+      26
+    ]
+  },
+  {
+    "number": 12,
+    "caption": "问题四两种方案在指定日期的紧急购电（kWh）",
+    "previous_tables": [
+      27,
+      28
+    ]
+  }
+]
