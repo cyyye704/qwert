@@ -10,6 +10,7 @@ import zipfile
 OUT = Path(__file__).resolve().parent
 ROOT = OUT.parent
 DATES = ['2025-03-20', '2025-06-21', '2025-09-23', '2025-12-21']
+QUESTION_LABELS = {'2': '问题二', '3': '问题三'}
 Q = {n: json.loads((ROOT / f'results/problem{n}.json').read_text(encoding='utf-8')) for n in range(1, 5)}
 TABLES = {}
 INDEX = []
@@ -134,6 +135,7 @@ def payload(q):
 def typical(q):
     data = payload(q)
     tokens = []
+    question_label = QUESTION_LABELS[q]
     for date in DATES:
         d = data[date]
         m = d['metrics']
@@ -146,8 +148,8 @@ def typical(q):
         whole = num(m['plan_kwh']) if q == '2' else f"{num(m['plan_kwh'])} / {num(m['final_purchase_kwh'])}"
         rows.append(['全天购电量', whole, '全天总费用/元', num(m['total_cost_yuan']), '单位', 'kWh、元'])
         pk = f'q{q}_{date}_purchase'
-        table(pk, f'问题{q}：{date}指定时段购电量与全天费用' + ('（原/终）' if q == '3' else ''),
-              ['时间段', '购电量', '时间段', '购电量', '时间段', '购电量'], rows,
+        table(pk, f'{question_label} {date} 指定时段购电量与全天费用' + ('（原计划/最终计划）' if q == '3' else ''),
+              ['时间段', '购电量/kWh', '时间段', '购电量/kWh', '时间段', '购电量/kWh'], rows,
               f'results/problem{q}.json:typical_days/{date}/plan_purchase_kwh,final_purchase_kwh,metrics')
         rows = []
         for a in [0, 8, 16]:
@@ -157,7 +159,7 @@ def typical(q):
             rows.append(row)
         rows.append(['0:00储电量', num(d['soc_kwh'][0]), '—', '24:00储电量', num(d['soc_kwh'][-1]), '—'])
         sk = f'q{q}_{date}_storage'
-        table(sk, f'问题{q}：{date}储能充放电与首末储电量（kWh）', ['时间段', '充电量', '放电量', '时间段', '充电量', '放电量'], rows,
+        table(sk, f'{question_label} {date} 储能充放电量及首末储电量（kWh）', ['时间段', '充电量', '放电量', '时间段', '充电量', '放电量'], rows,
               f'results/problem{q}.json:typical_days/{date}/charge_kwh,discharge_kwh,soc_kwh')
         tokens += [f'@@TABLE:{pk}@@', f'@@TABLE:{sk}@@']
     return '\n\n'.join(tokens)
@@ -244,14 +246,27 @@ table('validation', '实际运行与数值结果核验', ['检验项目', '结�
 
 # 生成标准 Markdown，并记录实际图表编号。
 source = (OUT / '正文源稿.md').read_text(encoding='utf-8')
+paper_only = '--paper-only' in sys.argv
 support_dir = ROOT.parent / 'backing_material'
-support_list = (support_dir / '文件清单.md').read_text(encoding='utf-8')
-support_grid = '\n'.join(line for line in support_list.splitlines() if line.startswith('|'))
-support_names = [line.split('|')[1].strip() for line in support_grid.splitlines()[2:]]
-assert len(support_names) == len(set(support_names))
-assert set(support_names) == {p.relative_to(support_dir).as_posix() for p in support_dir.rglob('*') if p.is_file()}
-with zipfile.ZipFile(ROOT.parent / 'backing_material.zip') as support_zip:
-    assert set(support_names) == {n for n in support_zip.namelist() if not n.endswith('/')}
+if support_dir.exists():
+    support_list = (support_dir / '文件清单.md').read_text(encoding='utf-8')
+    support_grid = '\n'.join(line for line in support_list.splitlines() if line.startswith('|'))
+    support_names = [line.split('|')[1].strip() for line in support_grid.splitlines()[2:]]
+    assert len(support_names) == len(set(support_names))
+    assert set(support_names) == {p.relative_to(support_dir).as_posix() for p in support_dir.rglob('*') if p.is_file()}
+    with zipfile.ZipFile(ROOT.parent / 'backing_material.zip') as support_zip:
+        assert set(support_names) == {n for n in support_zip.namelist() if not n.endswith('/')}
+elif paper_only:
+    # 克隆仓库时外置支撑材料不会随仓库出现；排版重建沿用上次已核验的附录表。
+    existing_md = (OUT / '微网电力调控策略_论文.md').read_text(encoding='utf-8')
+    support_match = re.search(r'表A1 支撑材料文件清单\s*\n\n((?:\|.*\|\n?)+)', existing_md)
+    if support_match is None:
+        raise FileNotFoundError('缺少外置支撑材料，且现有论文中没有可复用的表A1')
+    support_grid = support_match.group(1).rstrip()
+    support_names = [line.split('|')[1].strip() for line in support_grid.splitlines()[2:]]
+    assert len(support_names) == len(set(support_names))
+else:
+    raise FileNotFoundError('完整构建需要仓库同级的 backing_material 和 backing_material.zip')
 source = source.replace('@@SUPPORT_FILES@@', '表A1 支撑材料文件清单\n\n' + support_grid)
 source = re.sub(r'@@TYPICAL:(\d+)@@', lambda m: typical(m[1]), source)
 source = re.sub(r'@@EMERGENCY:(\d+)@@', lambda m: emergency(m[1]), source)
@@ -259,6 +274,7 @@ tn = 0
 fn = 1
 figures = [{'number': 1, 'source': '论文成稿/构建论文.py（TikZ流程图）', 'caption': '四问的模型递进与共同评价流程', 'type': 'diagram'}]
 TABLE_NOTES = {}
+TABLE_KEYS_BY_NUMBER = {}
 TABLE_CAPTION_EDITS = {
     '各发布时间光伏预测MAE（kW；按该次发布剩余时段评价）': ('各发布时间光伏预测MAE（kW）', '按该次发布剩余时段评价。'),
     '波动电价下典型日储能量（充电/放电；末两行为首末储电量，kWh）': ('波动电价下典型日储能量（kWh）', '单元格依次列出充电量与放电量；末两行为日初和日末储电量。'),
@@ -271,6 +287,16 @@ FIGURE_CAPTION_EDITS = {
     'Q4_F2_price_forecast_update': '实际电价与各发布时间的预测对比',
     'Q4_F4_rolling_gain_sensitivity': '不同电价波动情形下滚动策略的节约效果',
 }
+
+FIGURE_HEIGHT_EDITS = {
+    'Q1_F1_optimal_dispatch': 7.0,
+    'Q2_F2_uncertainty_scenarios': 7.0,
+    'Q2_F3_annual_risk_profile': 8.8,
+    'Q3_F1_rolling_timeline': 6.8,
+    'Q4_F2_price_forecast_update': 7.0,
+    'Q4_F4_rolling_gain_sensitivity': 7.0,
+}
+
 def expand_table(m):
     global tn
     tn += 1
@@ -278,6 +304,7 @@ def expand_table(m):
     cap, heads, rows = TABLES[key]
     cap, note = TABLE_CAPTION_EDITS.get(cap, (cap, ''))
     TABLE_NOTES[tn] = note
+    TABLE_KEYS_BY_NUMBER[tn] = key
     for entry in INDEX:
         if entry['table_key'] == key:
             entry['number'] = tn
@@ -297,7 +324,8 @@ def expand_figure(m):
     note = caption if name in ('Q3_F1_rolling_timeline', 'Q4_F4_rolling_gain_sensitivity') else caption.partition('。')[2]
     p = ROOT / 'new_figures_main' / (name + '.png')
     assert p.exists(), p
-    figures.append({'number': fn, 'source': p.relative_to(ROOT).as_posix(), 'caption': title, 'note': note, 'height_cm': float(height)})
+    figures.append({'number': fn, 'source': p.relative_to(ROOT).as_posix(), 'caption': title, 'note': note,
+                    'height_cm': FIGURE_HEIGHT_EDITS.get(name, float(height))})
     return f'![图{fn} {title}](../new_figures_main/{name}.png)' + ('\n\n图注：' + note if note else '')
 
 
@@ -342,6 +370,14 @@ def inline(text):
     return ''.join(result)
 
 
+def header_cell(text):
+    """表头统一加粗；量纲另起一行，避免宽表被过度压缩。"""
+    if '/' in text and not text.startswith('$'):
+        label, unit = text.rsplit('/', 1)
+        return r'\shortstack{\textbf{' + inline(label) + r'}\\{\normalfont ' + inline(f'（{unit}）') + '}}'
+    return r'\textbf{' + inline(text) + '}'
+
+
 header = r'''\documentclass[UTF8,a4paper,zihao=-4,fontset=windows]{ctexart}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb,graphicx,booktabs,array,adjustbox,caption,float,needspace,longtable}
@@ -357,8 +393,10 @@ header = r'''\documentclass[UTF8,a4paper,zihao=-4,fontset=windows]{ctexart}
 \setlength{\belowdisplayskip}{7pt}
 \setlength{\textfloatsep}{9pt}
 \setlength{\intextsep}{9pt}
-\captionsetup{font=small,labelfont=bf,textfont=bf,labelsep=space,justification=centering,singlelinecheck=false,skip=6pt}
-\newcommand{\figtabnote}[1]{\par\vspace{3pt}{\fontsize{9.5}{12}\selectfont\raggedright\noindent 注：#1\par}}
+\captionsetup{font=small,labelfont=bf,textfont=bf,labelsep=space,justification=centering,singlelinecheck=false}
+\captionsetup[table]{position=bottom,skip=5pt}
+\captionsetup[figure]{position=bottom,skip=5pt}
+\newcommand{\figtabnote}[1]{\par\vspace{3pt}{\fontsize{9}{11}\selectfont\raggedright\noindent 注：#1\par}}
 \ctexset{section={format=\Large\heiti,beforeskip=12pt,afterskip=6pt},subsection={format=\large\heiti,beforeskip=9pt,afterskip=5pt}}
 \pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{14pt}
@@ -429,15 +467,16 @@ while i < len(lines):
         i -= 1
         tex.append(r'\begingroup\fontsize{9.5}{12}\selectfont\renewcommand{\arraystretch}{1.15}')
         tex.append(r'\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.57\linewidth}>{\raggedright\arraybackslash}p{0.39\linewidth}@{}}')
-        tex.append(r'\caption*{表A1 支撑材料文件清单}\\\toprule 文件名 & 用途\\\midrule\endfirsthead')
-        tex.append(r'\caption*{表A1 支撑材料文件清单（续）}\\\toprule 文件名 & 用途\\\midrule\endhead')
+        tex.append(r'\toprule 文件名 & 用途\\\midrule\endfirsthead')
+        tex.append(r'\toprule 文件名 & 用途\\\midrule\endhead')
         tex.append(r'\midrule\multicolumn{2}{r}{续下页}\\\endfoot\bottomrule\endlastfoot')
         for filename, purpose in grid[1:]:
             wrapped_name = ''.join(escape(c) + r'\allowbreak{}' for c in filename)
             tex.append(wrapped_name + ' & ' + inline(purpose) + r'\\')
-        tex.append(r'\end{longtable}\endgroup')
+        tex.append(r'\end{longtable}\par\vspace{-4pt}\begin{center}\small\bfseries 表A1 支撑材料文件清单\end{center}\endgroup')
     elif re.match(r'^表\d+ ', line):
         table_number = int(re.match(r'^表(\d+)', line)[1])
+        table_key = TABLE_KEYS_BY_NUMBER[table_number]
         cap = re.sub(r'^表\d+ ', '', line)
         i += 1
         while not lines[i].strip():
@@ -452,13 +491,23 @@ while i < len(lines):
         ncols = len(grid[0])
         # 单个表格不拆页；在位置不足时整体移到下一页。
         alignment = 'l' + 'c' * (ncols-1)
-        tex.append(r'\begin{table}[H]\centering\caption{' + inline(cap) + '}')
+        tex.append(r'\begin{table}[H]\centering')
         tex.append(r'\fontsize{9.5}{12}\selectfont\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}')
         tex.append(r'\begin{adjustbox}{max width=\linewidth}\begin{tabular}{' + alignment + r'}\toprule')
-        tex.append(' & '.join(inline(c) for c in grid[0]) + r'\\\midrule')
-        for row in grid[1:]:
+        if table_key.startswith('emergency_'):
+            dates = grid[0][::2]
+            tex.append(' & '.join(r'\multicolumn{2}{c}{\textbf{' + inline(date) + '}}' for date in dates) + r'\\')
+            tex.append(' '.join(r'\cmidrule(lr){' + f'{2*j+1}-{2*j+2}' + '}' for j in range(len(dates))))
+            tex.append(' & '.join([r'\textbf{时段}', header_cell('购电量/kWh')] * len(dates)) + r'\\\midrule')
+        else:
+            tex.append(' & '.join(header_cell(c) for c in grid[0]) + r'\\\midrule')
+        grouped_rows = 2 if table_key in {'q4_slots', 'q4_storage'} else 0
+        for row_index, row in enumerate(grid[1:], start=1):
             tex.append(' & '.join(inline(c) for c in row) + r'\\')
+            if grouped_rows and row_index % grouped_rows == 0 and row_index < len(grid) - 1:
+                tex.append(r'\addlinespace[2pt]')
         tex.append(r'\bottomrule\end{tabular}\end{adjustbox}')
+        tex.append(r'\caption{' + inline(cap) + '}')
         if TABLE_NOTES[table_number]:
             tex.append(r'\figtabnote{' + inline(TABLE_NOTES[table_number]) + '}')
         tex.append(r'\end{table}')
@@ -468,7 +517,7 @@ while i < len(lines):
         if p.with_suffix('.pdf').exists():
             p = p.with_suffix('.pdf')
         tex.append(r'\begin{figure}[H]\centering')
-        tex.append(r'\includegraphics[width=\linewidth,height=' + str(f['height_cm']) + r'cm,keepaspectratio]{../' + p.relative_to(ROOT).as_posix() + '}')
+        tex.append(r'\includegraphics[width=.92\linewidth,height=' + str(f['height_cm']) + r'cm,keepaspectratio]{../' + p.relative_to(ROOT).as_posix() + '}')
         tex.append(r'\caption{' + inline(f['caption']) + '}')
         if f['note']:
             tex.append(r'\figtabnote{' + inline(f['note']) + '}')
