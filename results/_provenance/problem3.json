@@ -1,0 +1,17 @@
+{
+  "idx": 3,
+  "script": "src/problem3.py",
+  "code_sha256": "32f295d04bd12b4445155105d6d29149e55f97f80898400fca74208d29875997",
+  "seeds": [
+    "config:SEED=42"
+  ],
+  "inputs": {},
+  "outputs": {
+    "results/problem3.json": "95f05243503ead6f62998294ae27534d3bd071225406b670f9bac2ac4e1aaedd",
+    "results/problem3_ablation.csv": "c615f9dd79623b5808b366b65c74e74756b3d70b28e4963d1afe49d86c220406",
+    "results/problem3_adjustment.csv": "3f3fe8cb40f0f66ee87287f4b96fca95724c7f8470ca128b91178a4af3d28bc4",
+    "results/problem3_forecast_rmse.csv": "fce15f8eb02b6c418b7370ee2ab61c0b2b83d9fc718e45204ad6fb22ab18d14d"
+  },
+  "generated_at": 1789093364.131172,
+  "python": "3.12.10"
+}

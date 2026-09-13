@@ -1,0 +1,15 @@
+{
+  "idx": 2,
+  "script": "src/problem2.py",
+  "code_sha256": "9b8bf777139c3327b75b6a93b3999a812e56bc43cc12e0ada78475377012c7ed",
+  "seeds": [
+    "config:SEED=42"
+  ],
+  "inputs": {},
+  "outputs": {
+    "results/problem2.json": "1b171278642fa701d73eb6f094d46a530f203aa55842036bb1ce40d712642f43",
+    "results/problem2_daily.csv": "38cf2ac0d1870e299fade6fe441c90488620ee0908e562d4bfe515f2e9092aa2"
+  },
+  "generated_at": 1789086184.8915145,
+  "python": "3.12.10"
+}

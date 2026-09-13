@@ -1,0 +1,66 @@
+{
+  "conclusion": "The implementation matches the problem's day-bounded purchasing strategy: hourly endpoints and executed-prefix locking are correct, and forecasts after midnight are left to the next day's 00:00 plan.",
+  "problem_statement_basis": "Problem 3 asks for the current day's planned and adjusted purchasing strategy, while Attachment 3 supplies the next 24 hourly forecast points.",
+  "hourly_endpoint_mapping": [
+    {
+      "release": "00:00",
+      "lead_1_endpoint": "2025-03-20 01:00:00",
+      "lead_6_endpoint": "2025-03-20 06:00:00",
+      "lead_24_endpoint": "2025-03-21 00:00:00",
+      "same_day_leads_used": 24,
+      "cross_day_leads_discarded": 0
+    },
+    {
+      "release": "06:00",
+      "lead_1_endpoint": "2025-03-20 07:00:00",
+      "lead_6_endpoint": "2025-03-20 12:00:00",
+      "lead_24_endpoint": "2025-03-21 06:00:00",
+      "same_day_leads_used": 18,
+      "cross_day_leads_discarded": 6
+    },
+    {
+      "release": "12:00",
+      "lead_1_endpoint": "2025-03-20 13:00:00",
+      "lead_6_endpoint": "2025-03-20 18:00:00",
+      "lead_24_endpoint": "2025-03-21 12:00:00",
+      "same_day_leads_used": 12,
+      "cross_day_leads_discarded": 12
+    },
+    {
+      "release": "18:00",
+      "lead_1_endpoint": "2025-03-20 19:00:00",
+      "lead_6_endpoint": "2025-03-21 00:00:00",
+      "lead_24_endpoint": "2025-03-21 18:00:00",
+      "same_day_leads_used": 6,
+      "cross_day_leads_discarded": 18
+    }
+  ],
+  "executed_prefix_checks": [
+    {
+      "release": "06:00",
+      "executed_prefix_max_change_kwh": 0.0,
+      "next_segment_max_change_kwh": 1902.719028869323,
+      "note": "The executed prefix is invariant; suffix sensitivity is reported rather than required because storage and surplus can absorb a forecast perturbation."
+    },
+    {
+      "release": "12:00",
+      "executed_prefix_max_change_kwh": 0.0,
+      "next_segment_max_change_kwh": 1478.481682543425,
+      "note": "The executed prefix is invariant; suffix sensitivity is reported rather than required because storage and surplus can absorb a forecast perturbation."
+    },
+    {
+      "release": "18:00",
+      "executed_prefix_max_change_kwh": 0.0,
+      "next_segment_max_change_kwh": 766.8192283264749,
+      "note": "The executed prefix is invariant; suffix sensitivity is reported rather than required because storage and surplus can absorb a forecast perturbation."
+    }
+  ],
+  "first_hour_resampling_policy": "Before the first +1 h point, its value is held constant; later 10-minute points are linearly interpolated.",
+  "cross_day_test": {
+    "mutation": "Changed only leads 7-24 of the 18:00 forecast, which correspond to next-day 01:00-18:00.",
+    "maximum_change_in_current_day_decisions_kwh": 0.0,
+    "finding": "These values do not enter the current-day optimization and cannot leak into past decisions; the next day uses its own 00:00 forecast."
+  },
+  "model_scope": "Each update optimizes the remaining part of the current day; this follows the problem's repeated requirement to formulate the current day's purchasing strategy.",
+  "verdict": "No Q3 timestamp or cross-day leakage defect was found. The first-hour 10-minute resampling rule is a documented modeling choice because the problem supplies only hourly forecast points."
+}

@@ -1,0 +1,66 @@
+# Python bytecode and runtime caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local Python environments
+.venv/
+venv/
+env/
+.venv_figures/
+
+# Test, type-checker, linter, and coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+# Jupyter temporary state
+.ipynb_checkpoints/
+
+# Project-local scratch and rendered QA files
+/tmp/
+
+# Logs and transient files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Microsoft Office lock files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# LaTeX auxiliary files (keep source documents and final PDFs)
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.nav
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# Local secrets and machine-specific environment settings
+.env
+.env.*
+!.env.example
+
+# IDE and OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Keep build/c_spec_cache/: it contains final experiment caches used by figures.

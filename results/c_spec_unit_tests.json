@@ -1,0 +1,13 @@
+{
+  "right_endpoint_time_axis": true,
+  "power_to_energy_and_interval_limit": true,
+  "soc_efficiency_bounds_emergency_waste_balance": true,
+  "attachment_shapes_and_alignment": true,
+  "same_type_day_forecast_definition": true,
+  "zero_hour_excludes_current_and_future_actuals": true,
+  "six_hour_excludes_future_load_and_pv": true,
+  "price_updates_use_observed_prefix_only": true,
+  "cross_day_soc_without_terminal_target": true,
+  "rolling_update_boundaries_and_constraints": true,
+  "settlement_formula": true
+}

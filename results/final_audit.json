@@ -1,0 +1,264 @@
+{
+  "run_id": "c-spec-20260912T200729+0800",
+  "model_version": "c-spec-v1-2026-09-12",
+  "unit_tests": {
+    "right_endpoint_time_axis": true,
+    "power_to_energy_and_interval_limit": true,
+    "soc_efficiency_bounds_emergency_waste_balance": true,
+    "attachment_shapes_and_alignment": true,
+    "same_type_day_forecast_definition": true,
+    "zero_hour_excludes_current_and_future_actuals": true,
+    "six_hour_excludes_future_load_and_pv": true,
+    "price_updates_use_observed_prefix_only": true,
+    "cross_day_soc_without_terminal_target": true,
+    "rolling_update_boundaries_and_constraints": true,
+    "settlement_formula": true
+  },
+  "timestamp_tests_pass": true,
+  "timestamp_alignment_pass": true,
+  "q3_release_alignment_audit": {
+    "conclusion": "The implementation matches the problem's day-bounded purchasing strategy: hourly endpoints and executed-prefix locking are correct, and forecasts after midnight are left to the next day's 00:00 plan.",
+    "problem_statement_basis": "Problem 3 asks for the current day's planned and adjusted purchasing strategy, while Attachment 3 supplies the next 24 hourly forecast points.",
+    "hourly_endpoint_mapping": [
+      {
+        "release": "00:00",
+        "lead_1_endpoint": "2025-03-20 01:00:00",
+        "lead_6_endpoint": "2025-03-20 06:00:00",
+        "lead_24_endpoint": "2025-03-21 00:00:00",
+        "same_day_leads_used": 24,
+        "cross_day_leads_discarded": 0
+      },
+      {
+        "release": "06:00",
+        "lead_1_endpoint": "2025-03-20 07:00:00",
+        "lead_6_endpoint": "2025-03-20 12:00:00",
+        "lead_24_endpoint": "2025-03-21 06:00:00",
+        "same_day_leads_used": 18,
+        "cross_day_leads_discarded": 6
+      },
+      {
+        "release": "12:00",
+        "lead_1_endpoint": "2025-03-20 13:00:00",
+        "lead_6_endpoint": "2025-03-20 18:00:00",
+        "lead_24_endpoint": "2025-03-21 12:00:00",
+        "same_day_leads_used": 12,
+        "cross_day_leads_discarded": 12
+      },
+      {
+        "release": "18:00",
+        "lead_1_endpoint": "2025-03-20 19:00:00",
+        "lead_6_endpoint": "2025-03-21 00:00:00",
+        "lead_24_endpoint": "2025-03-21 18:00:00",
+        "same_day_leads_used": 6,
+        "cross_day_leads_discarded": 18
+      }
+    ],
+    "executed_prefix_checks": [
+      {
+        "release": "06:00",
+        "executed_prefix_max_change_kwh": 0.0,
+        "next_segment_max_change_kwh": 1902.719028869323,
+        "note": "The executed prefix is invariant; suffix sensitivity is reported rather than required because storage and surplus can absorb a forecast perturbation."
+      },
+      {
+        "release": "12:00",
+        "executed_prefix_max_change_kwh": 0.0,
+        "next_segment_max_change_kwh": 1478.481682543425,
+        "note": "The executed prefix is invariant; suffix sensitivity is reported rather than required because storage and surplus can absorb a forecast perturbation."
+      },
+      {
+        "release": "18:00",
+        "executed_prefix_max_change_kwh": 0.0,
+        "next_segment_max_change_kwh": 766.8192283264749,
+        "note": "The executed prefix is invariant; suffix sensitivity is reported rather than required because storage and surplus can absorb a forecast perturbation."
+      }
+    ],
+    "first_hour_resampling_policy": "Before the first +1 h point, its value is held constant; later 10-minute points are linearly interpolated.",
+    "cross_day_test": {
+      "mutation": "Changed only leads 7-24 of the 18:00 forecast, which correspond to next-day 01:00-18:00.",
+      "maximum_change_in_current_day_decisions_kwh": 0.0,
+      "finding": "These values do not enter the current-day optimization and cannot leak into past decisions; the next day uses its own 00:00 forecast."
+    },
+    "model_scope": "Each update optimizes the remaining part of the current day; this follows the problem's repeated requirement to formulate the current day's purchasing strategy.",
+    "verdict": "No Q3 timestamp or cross-day leakage defect was found. The first-hour 10-minute resampling rule is a documented modeling choice because the problem supplies only hourly forecast points."
+  },
+  "soc_bounds_pass": true,
+  "charge_discharge_limits_pass": true,
+  "energy_balance_pass": true,
+  "maximum_energy_balance_residual_kwh": 2.273736754432321e-13,
+  "simultaneous_charge_discharge_periods": 0,
+  "cross_day_soc_continuity_pass": true,
+  "release_boundaries_36_72_108": true,
+  "q4_price_volatility_sensitivity": {
+    "pass": true,
+    "run_id_matches_summary": true,
+    "factors": [
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5
+    ],
+    "baseline_matches_main_q4": true,
+    "daily_mean_price_preserved": true,
+    "all_stressed_prices_positive": true
+  },
+  "workbooks": {
+    "result1.xlsx": {
+      "exists": true,
+      "bytes": 8825,
+      "sha256": "de3b8eab1203c4ddb2be0efa3870edde88a65994d0d69af6d83261de804b4458",
+      "sheets": [
+        "计划购电量",
+        "充放电量"
+      ],
+      "official_sheet_set": true,
+      "time_labels_correct": true,
+      "position_j_equals_internal_j": true,
+      "purchase_sum_error_kwh": 0.0,
+      "purchase_cost_error_yuan": 1.4551915228366852e-11,
+      "selected_position_max_error_kwh": 0.0,
+      "storage_window_max_error_kwh": 4.547473508864641e-13,
+      "soc_start_error_kwh": 0.0,
+      "soc_end_error_kwh": 0.0,
+      "content_matches_q1_json": true
+    },
+    "result2.xlsx": {
+      "exists": true,
+      "bytes": 489083,
+      "sha256": "d08aad13a39b24a7e4133a2868847aaf2b3b727cc8517ad2f7c7f09187ac32ec",
+      "sheets": [
+        "计划购电量",
+        "充放电量",
+        "紧急购电量"
+      ],
+      "official_sheet_set": true,
+      "plan_rows": 334,
+      "dates_match": true,
+      "time_labels_correct": true,
+      "position_j_equals_internal_j": true,
+      "max_plan_sum_error_kwh": 2.9103830456733704e-11,
+      "max_plan_cost_error_yuan": 1.4551915228366852e-11,
+      "max_final_sum_error_kwh": 0.0,
+      "max_final_cost_error_yuan": 0.0,
+      "max_charge_sum_error_kwh": 7.275957614183426e-12,
+      "max_discharge_sum_error_kwh": 7.275957614183426e-12,
+      "max_emergency_sum_error_kwh": 3.637978807091713e-12,
+      "max_soc_start_error_kwh": 1.8189894035458565e-12,
+      "max_soc_end_error_kwh": 1.8189894035458565e-12,
+      "content_matches_daily_csv": true
+    },
+    "result3.xlsx": {
+      "exists": true,
+      "bytes": 932342,
+      "sha256": "0edacc6026ec059edcea4d8524f8ba226187ccb4956ab6ca3556230a1db977f7",
+      "sheets": [
+        "计划购电量",
+        "调整购电量",
+        "充放电量",
+        "紧急购电量"
+      ],
+      "official_sheet_set": true,
+      "plan_rows": 334,
+      "dates_match": true,
+      "time_labels_correct": true,
+      "position_j_equals_internal_j": true,
+      "max_plan_sum_error_kwh": 2.9103830456733704e-11,
+      "max_plan_cost_error_yuan": 1.4551915228366852e-11,
+      "max_final_sum_error_kwh": 2.9103830456733704e-11,
+      "max_final_cost_error_yuan": 1.4551915228366852e-11,
+      "max_charge_sum_error_kwh": 7.275957614183426e-12,
+      "max_discharge_sum_error_kwh": 7.275957614183426e-12,
+      "max_emergency_sum_error_kwh": 4.547473508864641e-13,
+      "max_soc_start_error_kwh": 1.8189894035458565e-12,
+      "max_soc_end_error_kwh": 1.8189894035458565e-12,
+      "content_matches_daily_csv": true
+    },
+    "result4-2.xlsx": {
+      "exists": true,
+      "bytes": 487744,
+      "sha256": "b6679a1d9f7526a0f06aaa5ec190667a7eef47efadca53be79f5306d5f57d417",
+      "sheets": [
+        "计划购电量",
+        "充放电量",
+        "紧急购电量"
+      ],
+      "official_sheet_set": true,
+      "plan_rows": 334,
+      "dates_match": true,
+      "time_labels_correct": true,
+      "position_j_equals_internal_j": true,
+      "max_plan_sum_error_kwh": 2.1827872842550278e-11,
+      "max_plan_cost_error_yuan": 1.4551915228366852e-11,
+      "max_final_sum_error_kwh": 0.0,
+      "max_final_cost_error_yuan": 0.0,
+      "max_charge_sum_error_kwh": 7.275957614183426e-12,
+      "max_discharge_sum_error_kwh": 7.275957614183426e-12,
+      "max_emergency_sum_error_kwh": 3.637978807091713e-12,
+      "max_soc_start_error_kwh": 7.275957614183426e-12,
+      "max_soc_end_error_kwh": 7.275957614183426e-12,
+      "content_matches_daily_csv": true
+    },
+    "result4-3.xlsx": {
+      "exists": true,
+      "bytes": 934379,
+      "sha256": "bac58c599c97a4814209ce16f72862a39097487569670765bcc3369d9853208a",
+      "sheets": [
+        "计划购电量",
+        "调整购电量",
+        "充放电量",
+        "紧急购电量"
+      ],
+      "official_sheet_set": true,
+      "plan_rows": 334,
+      "dates_match": true,
+      "time_labels_correct": true,
+      "position_j_equals_internal_j": true,
+      "max_plan_sum_error_kwh": 2.9103830456733704e-11,
+      "max_plan_cost_error_yuan": 1.4551915228366852e-11,
+      "max_final_sum_error_kwh": 1.4551915228366852e-11,
+      "max_final_cost_error_yuan": 1.4551915228366852e-11,
+      "max_charge_sum_error_kwh": 7.275957614183426e-12,
+      "max_discharge_sum_error_kwh": 7.275957614183426e-12,
+      "max_emergency_sum_error_kwh": 6.821210263296962e-13,
+      "max_soc_start_error_kwh": 7.275957614183426e-12,
+      "max_soc_end_error_kwh": 7.275957614183426e-12,
+      "content_matches_daily_csv": true
+    }
+  },
+  "all_five_workbooks_generated": true,
+  "all_five_workbooks_match_sources": true,
+  "figures": {
+    "count": 26,
+    "all_exist": true,
+    "sha256": {
+      "figures\\forecast_pv_mae.png": "ef08211d3599e87560320b9bee636b6722aab4aa9f7dbf85b2723a58114aaa3e",
+      "figures\\P2_2025-03-20.png": "34fc90b62e6ffb7b1ed7a1c18f4ff784c32fbf5e39bdde0a5ea38a5afa9732a8",
+      "figures\\P2_2025-06-21.png": "eece6316b81a89483e30512e3210c3740b8cd30e69608adf0e15554e0d3637da",
+      "figures\\P2_2025-09-23.png": "33a5c9c3d085343316901db8e2c6bc8a7d9c79da8b266dd91c0cdac1101ab6e2",
+      "figures\\P2_2025-12-21.png": "20b281684332d27744cb45d52a5f9825f944968c650219d306f4ec63eaf40d73",
+      "figures\\P3_2025-03-20.png": "ec3778b05641d504d70c76ff7eaef2003f10480204f9a65cfdf5df363b46f175",
+      "figures\\P3_2025-06-21.png": "794583c9c850d8461bbe17f331088a6c391ac958368a87e13e1412d57b06c6f1",
+      "figures\\P3_2025-09-23.png": "062ec3af68e1ecd592f0cdb3dd04f8f303089ae9959e3d497ea373e19d94ecc1",
+      "figures\\P3_2025-12-21.png": "35eac0f696d6d72824dce6e193c179063c4c73da57573d5917e02dd6d5712484",
+      "figures\\P3_compare.png": "ce96021a081063343b4f557c8b943de9749c1d52e51402a95abab129336f5cc0",
+      "figures\\P4-2_2025-03-20.png": "732c360a3b7a36aea12fd4c492f086984cd8a0dd9e1d87eb28bb3971b8c01f4c",
+      "figures\\P4-2_2025-06-21.png": "f70f6520f1eb33be91d0f5b4653866581303eefb48d99595d571b5a79763b396",
+      "figures\\P4-2_2025-09-23.png": "dfd7d1e353c0b12e8efb45cf213b1b4f4d9383e89d603838bc6361179461c0cf",
+      "figures\\P4-2_2025-12-21.png": "cf7be1363592465162ec772c23c273d9a6cdb75d295284c87417a0276029c19f",
+      "figures\\P4-3_2025-03-20.png": "33a413a197220c9cb6ca9d57d596cbe57cb6261ff095de0b469ea57a184f2f3e",
+      "figures\\P4-3_2025-06-21.png": "ae26aa0406f812d43cb9e9de59ee8b7d50afe935aa22cc4941a83944b6a5b6de",
+      "figures\\P4-3_2025-09-23.png": "54e63f1e74d3ea3b4756e2a37fef7363caebcd15e0fdf24ed74dc1567464bc7d",
+      "figures\\P4-3_2025-12-21.png": "727c3be663ece7419d8b8fbb7291c8ceb333e581ee08ba71a17f4da795b47a2c",
+      "figures\\P4_compare.png": "9eaef9567e303625e080dee0473caac8ca1577c6f6dabde527b261525eaedb53",
+      "figures\\P4_price_forecast.png": "0da9ccecd60fe33a1088257db82931e29e04d21e9164d012c31c5b553739351e",
+      "figures\\P4_price_volatility_sensitivity.png": "17151d9b159549762b83b5127a32ca425cf9ca463c7b22337be5009c997b83ba",
+      "figures\\problem1.pdf": "783df0d84db5140e69e42db579e13c9a9326e87931db4aeae51cc5134ee170ad",
+      "figures\\problem1.png": "f91a0ad8f14825ef5850b05afb39c126069506e3420ca9a1013b1f99ac0e9f2b",
+      "figures\\problem1_diagnostic.pdf": "83d0ee680ab5ac226475a9f93f3c189bd8af3ace856493a19a9806a848ef86b1",
+      "figures\\problem1_diagnostic.png": "137c98197a81d147715013fa0c7cdf6a4371bdc9ca11a91ea7b087fe5c4812b7",
+      "figures\\problem1_sensitivity.png": "c3faf0abcdb2cf3efdab930ad688c06ff35501b79b5cc9f39012b9f1ceecbfd5"
+    }
+  },
+  "final_delivery_chain_pass": true
+}

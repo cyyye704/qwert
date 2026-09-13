@@ -1,0 +1,41 @@
+"""Constants for the implementation specified by ``c建模说明与结果.txt``.
+
+For questions 2--4, ``charge`` and ``discharge`` are grid-side interval energy
+(kWh).  Consequently ``soc[t+1] = soc[t] + ETA*charge - discharge/ETA``.
+Changing any value in this file invalidates every Q2/Q3/Q4 result and cache.
+"""
+import pandas as pd
+
+SEED = 42
+DT = 1.0 / 6.0
+STEPS_PER_HOUR = 6
+TIME_STEP_MINUTES = 10
+N = 24 * STEPS_PER_HOUR
+YEAR_DAYS = 365
+ETA = 0.90
+CAPACITY_KWH = 12000.0
+SOC_INITIAL = 6000.0
+SOC_LOWER = 1200.0
+SOC_UPPER = 10800.0
+POWER_LIMIT_KW = 5000.0
+ENERGY_LIMIT = POWER_LIMIT_KW * DT
+DECISION_START = pd.Timestamp("2025-02-01")
+DECISION_END = pd.Timestamp("2025-12-31")
+SPECIFIED = ("2025-03-20", "2025-06-21", "2025-09-23", "2025-12-21")
+RELEASES = (0, 6, 12, 18)
+LOAD_HISTORY_SAME_TYPE_DAYS = 3
+PV_HISTORY_DAYS = 5
+PRICE_HISTORY_SAME_TYPE_DAYS = 3
+RESIDUAL_SCENARIOS = 10
+COMBINATION_LOOKBACK_DAYS = 30
+COMBINATION_WEIGHT_GRID = tuple(i / 10.0 for i in range(11))
+SOC_SAFETY_MARGIN_KWH = 300.0
+TERMINAL_VALUE_YUAN_PER_KWH = 0.42
+LOAD_AR_RHO = 0.65
+PV_PERSISTENCE_PHI = 0.94
+EMERGENCY_PRICE_MULTIPLIER = 5.0
+DECREASE_FEE_MULTIPLIER = 0.5
+INCREASE_PRICE_MULTIPLIER = 1.5
+THROUGHPUT_REGULARIZATION_YUAN_PER_KWH = 1e-3
+LP_METHOD = "highs"
+MODEL_VERSION = "c-spec-v1-2026-09-12"

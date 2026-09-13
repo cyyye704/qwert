@@ -1,0 +1,114 @@
+{
+  "mapping_rule": "template position j <- internal j; labels changed, arrays unchanged",
+  "key_labels": {
+    "0": "0:00-0:10",
+    "35": "5:50-6:00",
+    "36": "6:00-6:10",
+    "60": "10:00-10:10",
+    "72": "12:00-12:10",
+    "108": "18:00-18:10",
+    "143": "23:50-0:00+1"
+  },
+  "release_boundaries": {
+    "06:00": 36,
+    "12:00": 72,
+    "18:00": 108
+  },
+  "workbooks": {
+    "result1.xlsx": {
+      "labels": {
+        "0": "0:00-0:10",
+        "35": "5:50-6:00",
+        "36": "6:00-6:10",
+        "60": "10:00-10:10",
+        "72": "12:00-12:10",
+        "108": "18:00-18:10",
+        "143": "23:50-0:00+1"
+      },
+      "position_j_equals_internal_j": true,
+      "purchase_max_abs_error_kwh": 4.547473508864641e-13,
+      "cost_yuan": 35101.56755415551,
+      "source_first_timestamp": "00:10:00",
+      "official_sheet_set": true,
+      "template_styles_preserved": true,
+      "all_144_labels_exact": true
+    },
+    "result2.xlsx": {
+      "cache": "build\\c_spec_cache\\q2_fixed_a3de9cbf6b675e252f96.npz",
+      "labels": {
+        "0": "0:00-0:10",
+        "35": "5:50-6:00",
+        "36": "6:00-6:10",
+        "60": "10:00-10:10",
+        "72": "12:00-12:10",
+        "108": "18:00-18:10",
+        "143": "23:50-0:00+1"
+      },
+      "position_j_equals_internal_j": true,
+      "plan_max_abs_error_kwh": 4.547473508864641e-13,
+      "final_max_abs_error_kwh": 0.0,
+      "release_boundaries_36_72_108": true,
+      "official_sheet_set": true,
+      "template_styles_preserved": true,
+      "all_144_labels_exact": true
+    },
+    "result3.xlsx": {
+      "cache": "build\\c_spec_cache\\q3_6_12_18_rec_39c8fa1a4dd9cd8ca668.npz",
+      "labels": {
+        "0": "0:00-0:10",
+        "35": "5:50-6:00",
+        "36": "6:00-6:10",
+        "60": "10:00-10:10",
+        "72": "12:00-12:10",
+        "108": "18:00-18:10",
+        "143": "23:50-0:00+1"
+      },
+      "position_j_equals_internal_j": true,
+      "plan_max_abs_error_kwh": 4.547473508864641e-13,
+      "final_max_abs_error_kwh": 4.547473508864641e-13,
+      "release_boundaries_36_72_108": true,
+      "official_sheet_set": true,
+      "template_styles_preserved": true,
+      "all_144_labels_exact": true
+    },
+    "result4-2.xlsx": {
+      "cache": "build\\c_spec_cache\\q4_causal_q2_ea8d6fef4c7c10188c34.npz",
+      "labels": {
+        "0": "0:00-0:10",
+        "35": "5:50-6:00",
+        "36": "6:00-6:10",
+        "60": "10:00-10:10",
+        "72": "12:00-12:10",
+        "108": "18:00-18:10",
+        "143": "23:50-0:00+1"
+      },
+      "position_j_equals_internal_j": true,
+      "plan_max_abs_error_kwh": 4.547473508864641e-13,
+      "final_max_abs_error_kwh": 0.0,
+      "release_boundaries_36_72_108": true,
+      "official_sheet_set": true,
+      "template_styles_preserved": true,
+      "all_144_labels_exact": true
+    },
+    "result4-3.xlsx": {
+      "cache": "build\\c_spec_cache\\q4_causal_q3_1b3f5149e97b5cda8e76.npz",
+      "labels": {
+        "0": "0:00-0:10",
+        "35": "5:50-6:00",
+        "36": "6:00-6:10",
+        "60": "10:00-10:10",
+        "72": "12:00-12:10",
+        "108": "18:00-18:10",
+        "143": "23:50-0:00+1"
+      },
+      "position_j_equals_internal_j": true,
+      "plan_max_abs_error_kwh": 4.547473508864641e-13,
+      "final_max_abs_error_kwh": 4.547473508864641e-13,
+      "release_boundaries_36_72_108": true,
+      "official_sheet_set": true,
+      "template_styles_preserved": true,
+      "all_144_labels_exact": true
+    }
+  },
+  "final_workbooks_ready": true
+}

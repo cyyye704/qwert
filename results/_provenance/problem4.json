@@ -1,0 +1,20 @@
+{
+  "idx": 4,
+  "script": "src/problem4.py",
+  "code_sha256": "cb08e5a698b9e2e805a561d6320066df210b444892eaffad2f032e8ca439c960",
+  "seeds": [
+    "config:SEED=42",
+    "result:seed=42"
+  ],
+  "inputs": {},
+  "outputs": {
+    "results/problem4.json": "add0cd0e6be5198b7f97c7d83bcba1d65c10997ffead14d3da3d7337ab219167",
+    "results/problem4_p2_fixed_daily.csv": "4ede237bf4868b5caf5225a68a705292d2cf55dc812c2fa809aff2af953599f8",
+    "results/problem4_p2_variable_daily.csv": "20bff2c49f888f2a7dd3e6b5cf9ae4f0c7a46b10523846c65570fc76db8204c7",
+    "results/problem4_p3_fixed_daily.csv": "6c5fe337b9f5ffd24b39026bc290c9222519d8bd46c641c1518219f3f063902e",
+    "results/problem4_p3_variable_daily.csv": "4080830d011038380d1a51c5aa8a8311d99c2374a77d67bb917a3325511bd916",
+    "results/problem4_price_stats.json": "3e8fd04db91a02fefc9613c56deba21aba43aa398e2d99a2234651140ad64aaa"
+  },
+  "generated_at": 1789097698.8692448,
+  "python": "3.12.10"
+}
