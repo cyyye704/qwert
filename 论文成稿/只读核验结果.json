@@ -1,0 +1,186 @@
+{
+  "original_files_unchanged": 178,
+  "q1_cost_recomputed_yuan": 35101.567554155496,
+  "all_cache_audits": [
+    {
+      "file": "perfect_fixed_707929fa5b9cd670c7d6.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "perfect_variable_eb605db3aa7ca8fa8e3d.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q2_fixed_a3de9cbf6b675e252f96.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_12_18_d24003d6a2ce0bb7a12e.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_12_f35a5afae6d28c6a6894.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_18_20dc119bf1e9e477ff54.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_6_12_18_8a116a581929dd41771f.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_6_12_18_rec_39c8fa1a4dd9cd8ca668.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_6_12_e952a232510846ee5f99.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_6_3a067d4eebb2038e66a1.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q3_none_29862a174c96d492597b.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_causal_q2_ea8d6fef4c7c10188c34.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_causal_q3_1b3f5149e97b5cda8e76.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_oracle_q2_93ee086cf647b4eb2ca6.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_oracle_q3_7542a1fc12e4829e1ae2.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q2_f050_142424e1a410a4755351.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q2_f075_7123689bbb714d6fdf16.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q2_f125_562ada0515efe0ee03e5.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q2_f150_5d9196775ac11722f232.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q3_f050_2ff4e418da0f5d149eb4.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q3_f075_d0f230645469966903e0.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q3_f125_6cd12206fc7715c9fbad.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    },
+    {
+      "file": "q4_sensitivity_q3_f150_46531f4edcfd3e4d62c1.npz",
+      "max_balance_recomputed_kwh": 4.547473508864641e-13,
+      "max_soc_recursion_kwh": 9.094947017729282e-13,
+      "cross_day_continuous": true
+    }
+  ],
+  "annual_recomputation": [
+    {
+      "model": "2",
+      "cost_yuan": 13701658.50073258,
+      "emergency_kwh": 127912.33303554569,
+      "workbook_cache_max_difference_kwh": 4.547473508864641e-13,
+      "typical_arrays_match_cache": true
+    },
+    {
+      "model": "3",
+      "cost_yuan": 13266622.729588892,
+      "emergency_kwh": 21152.53044688981,
+      "workbook_cache_max_difference_kwh": 4.547473508864641e-13,
+      "typical_arrays_match_cache": true
+    },
+    {
+      "model": "42",
+      "cost_yuan": 14401772.581567042,
+      "emergency_kwh": 126055.49297905147,
+      "workbook_cache_max_difference_kwh": 4.547473508864641e-13,
+      "typical_arrays_match_cache": true
+    },
+    {
+      "model": "43",
+      "cost_yuan": 13953460.931182332,
+      "emergency_kwh": 22900.972321410485,
+      "workbook_cache_max_difference_kwh": 4.547473508864641e-13,
+      "typical_arrays_match_cache": true
+    }
+  ],
+  "q1_sensitivity_cost_range": [
+    35056.72271529688,
+    40319.54148389158
+  ],
+  "q4_volatility_daily_mean_max_error": 1.2212453270876722e-15,
+  "abstract_characters_without_whitespace": 723,
+  "pdf_pages": 22,
+  "pdf_all_pages_have_content": true,
+  "overfull_boxes": 0,
+  "missing_glyphs": 0,
+  "source_package_entries": 75,
+  "solver_rerun": false
+}
